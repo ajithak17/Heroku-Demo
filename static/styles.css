@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #ffffff;
+  background-image: url("index.jpeg");
+  min-width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #000;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* Quote Styles */
+.quote-container {
+  width: auto;
+  max-width: 900px;
+  border-radius: 10px;
+  padding: 20px 30px;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.quote-text {
+  font-size: 2.75rem;
+}
+
+.long-quote {
+  font-size: 2rem;
+}
+
+.fa-quote-left {
+  font-size: 4.1rem;
+  margin-right: 15px;
+}
+
+.quote-author {
+  margin-top: 25px;
+  font-size: 2rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Button Styles */
+.button-container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  cursor: pointer;
+  font-size: 1.2rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #333;
+  outline: none;
+  padding: 0.5rem 1.8rem;
+  box-shadow: 0.2rem 0.3rem 0.2rem rgba(121, 121, 121, 0.65);
+}
+
+button:hover {
+  filter: brightness(110%);
+}
+
+button:active {
+  transform: (0.2rem, 0.3rem);
+  box-shadow: 0 0.1rem rgba(255, 255, 255, 0.65);
+}
+
+
+
+.twitter-button:hover {
+  color: #38a1f3;
+}
+
+.fa-twitter {
+  font-size: 1.5rem;
+}
+
+/* Loader */
+.loader {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #333;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Media Query: Smaller Screen(Tablet/ Mobile) */
+@media screen and (max-width: 1000px) {
+  .quote-container {
+    margin: auto 15px;
+  }
+
+  .quote-text {
+    font-size: 2.3rem;
+  }
+
+  .long-quote {
+    font-size: 1.9rem;
+  }
+  .quote-author {
+    margin-top: 18px;
+    font-size: 1.7rem;
+  }
+}
