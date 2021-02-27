@@ -1,0 +1,164 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classifier</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://www.google.com/s2/favicons?domain=gnanaganesh-resume.web.app"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}" />
+    <style>   
+       input[type=file]
+      {
+    height:30px;  margin: -5px 250px; width:300px; top:50%; left:50%;
+    margin-top: 15px;
+   display: flex;
+  justify-content: center;
+
+  cursor: pointer;
+  font-size: 1.2rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #333;
+  outline: none;
+  padding: 0.5rem 1.8rem;
+  box-shadow: 0.2rem 0.3rem 0.2rem rgba(121, 121, 121, 0.65);
+
+  transform: (0.2rem, 0.3rem);
+  box-shadow: 0 0.1rem rgba(255, 255, 255, 0.65);
+
+ 
+   
+     
+ }
+      
+
+      input[type=submit]
+      {
+    height:30px; position:relative; margin: -10px -50px; width:100px; top:50%; left:50%;
+    padding:5px 15px;
+    margin-top: 15px;
+   display: flex;
+  justify-content: center;
+
+  cursor: pointer;
+  font-size: 1.2rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #333;
+  outline: none;
+  padding: 0.5rem 1.8rem;
+  box-shadow: 0.2rem 0.3rem 0.2rem rgba(121, 121, 121, 0.65);
+
+  transform: (0.2rem, 0.3rem);
+  box-shadow: 0 0.1rem rgba(255, 255, 255, 0.65);
+
+ 
+   
+     
+ }
+    </style>
+</head>
+<body>
+     <form id="imgur" method="POST" enctype="multipart/form-data" action="{{url_for('classify')}}">
+   
+    <div class="quote-container" id="quote-container">
+      <div class="quote-text">
+        <span id="quote">If you want to Classify your crop...</span>
+      </div>
+      
+      <div class="quote-author">
+        <span id="author"></span>
+      </div>
+
+      <div class="box">
+      <input type="file" class="imgur" name="file" accept="image/*" class="inputfile">
+      <input type="submit" value="Upload">
+      </div>
+
+
+      <div class="button-container">
+      </div>
+    </div>
+</form>
+
+</body>
+    <script src="scripts.js"></script>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<script>
+    $("document").ready(function () {
+
+        $('input[type=file]').on("change", function () {
+
+            var $files = $(this).get(0).files;
+
+            if ($files.length) {
+
+                // Reject big files
+                if ($files[0].size > $(this).data("max-size") * 1024) {
+                    console.log("Please select a smaller file");
+                    return false;
+                }
+
+                // Replace ctrlq with your own API key
+                var apiUrl = 'https://api.imgur.com/3/image';
+                var apiKey = '5b103bbe3e1ff42';
+
+                var formData = new FormData();
+                formData.append("image", $files[0]);
+
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": apiUrl,
+                    "method": "POST",
+                    "datatype": "json",                
+                    "headers": {
+                        "Authorization": "Client-ID " + apiKey
+                    },
+                    "processData": false,
+                    "contentType": false,
+                    "data": formData,
+                    beforeSend: function (xhr) {
+                        console.log("Uploading | 上传中");
+                    },
+                    success: function (res) {
+                        $('form').append('<input type="hidden" name="hidden" value="'+res.data.link+'">');
+                                                 console.log(res.data.link);
+      },
+                    error: function () {
+                        alert("Failed | 上传失败");
+                    }
+                }
+                $.ajax(settings).done(function (response) {
+                    console.log("Done | 成功");
+                });
+            }
+        });
+    });
+</script>
+
+
+        
+    </div>
+
+    
+
+</div>
+</html>

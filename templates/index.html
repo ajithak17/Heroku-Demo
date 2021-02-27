@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classifier</title>
+    <style>
+      .centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+   border-radius: 5px; 
+}
+    input[type=submit] {
+    height:30px; position:relative; margin: -10px -50px; width:100px; top:50%; left:50%;
+    padding:5px 15px; 
+    background: #32CD32; 
+    border:0 none;
+    
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+     
+ }
+
+</style>
+</head>
+
+
+<body>
+        <div class="container">
+          <form id="imgur" method="POST" enctype="multipart/form-data" action="{{url_for('upload')}}">
+
+           <img src="{{url_for('static',filename = 'image3.jpg')}}" width="1350" height="630">
+           <div class="centered"><h2>CULTIVATORS ARE THE MOST VALUABLE CITIZENS</h1>
+            <div class="bt">
+              <input type="submit"  value="Get Started">
+            </div>
+</div>
+          </form>
+        </div>
+
+</body>
+
+
+   
+        
+    
+    
+
+</html>
