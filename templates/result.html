@@ -15,23 +15,39 @@
     />
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}" />
 </head>
-<body>
-     <form id="imgur" method="POST" enctype="multipart/form-data" >
+
+
+          
    
-    <div class="quote-container" id="quote-container">
+<body>
+          {% if data %}
+         <img src="https://i.imgur.com/MywnT0T.jpg" height="300px" width="200px">
+          {% endif %}
+           {% if data %}
+           <h4 id="text">Your Crop name:</h4><p>{{ data }}</p>
+
+          {% endif %}
+
+
+     <!-- <form id="imgur" method="POST" enctype="multipart/form-data" >
+          <h4 id="text">Your Crop name:</h4><p>{{ data }}</p>
+
+
+         {% if data %}
+          {% endif %}
+
+   <div class="quote-container" id="quote-container">
       <div class="quote-text">
         <span id="quote">
 
-          {% if data %}
-          <h4 id="text">Your Crop name:</h4><p>{{ data }}</p>
-          {% endif %}
+         
 
         </span>
       </div>
-      
+     
      
 </form>
-
+--> 
 </body>
     <script src="scripts.js"></script>
 
