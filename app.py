@@ -8,7 +8,6 @@ import tensorflow as tf
 import numpy as np
 import pathlib
 
-from PIL import Image
 import requests
 from io import BytesIO
 
