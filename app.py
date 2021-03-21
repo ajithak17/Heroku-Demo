@@ -1,14 +1,14 @@
 from flask import Flask,render_template,request
 import requests,json
 
-#from werkzeug.utils import secure_filename
+from werkzeug.utils import secure_filename
 import os
 
 import tensorflow as tf
 import numpy as np
-#import pathlib
+import pathlib
 
-#from PIL import Image
+from PIL import Image
 import requests
 from io import BytesIO
 
@@ -29,10 +29,11 @@ def upload():
 @app.route('/classify', methods=['POST'])
 def classify():
     from tensorflow.keras.models import load_model
-    model=load_model('mymodel.h5')
+    model=load_model('model.h5')
     from tensorflow.keras.preprocessing import image
     if request.method == 'POST':
         # Get the file from post request
+        f=request.files['file']
         path = request.form.get('hidden')
    
         classes=['maize','rice','sugarcane','wheat']
@@ -48,7 +49,7 @@ def classify():
         
         content = requests.get(path).content
         result =np.argmax(model.predict(decode_img(content)),axis=1)
-        return render_template('result.html', data=classes[result[0]])
+        return render_template('result.html', data=classes[result[0]],p=path)
 
      
   
