@@ -117,18 +117,20 @@
                     success: function (res) { 
                       setTimeout(function(){ 
                         $('form').append('<input type="hidden" name="hidden" value="'+res.data.link+'">');
-                        console.log(res.data.link);
+                        $('form').append('<input type="hidden" name="imgId" value="'+res.data.id+'">');
+                        console.log(res.data);
+                        console.log(res);
                         document.getElementById('up').disabled = false;
 
                       }, 10000);
                     },
                     error: function () {
-                        alert("Failed | 上传失败");
+                        alert("Failed ");
                     }
                 }
                 $.ajax(settings).done(function (response) {
-                    console.log("Done | 成功");
-                        alert("Please Wait"); 
+                    console.log("Done ");
+                        alert("Please Wait,Your File was Uploading"); 
                 });
             }
         });
