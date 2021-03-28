@@ -47,7 +47,7 @@ def classify():
         
         content = requests.get(path).content
         result =np.argmax(model.predict(decode_img(content)),axis=1)
-        return render_template('result.html', data=classes[result[0]])
+        return render_template('result.html', data=classes[result[0]],p=id)
 
      
   
