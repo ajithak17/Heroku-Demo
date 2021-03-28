@@ -28,12 +28,12 @@ def upload():
 @app.route('/classify', methods=['POST'])
 def classify():
     from tensorflow.keras.models import load_model
-    model=load_model('mymodel.h5')
+    model=load_model('model.h5')
     from tensorflow.keras.preprocessing import image
     if request.method == 'POST':
         # Get the file from post request
         path = request.form.get('hidden')
-   
+        id = request.form.get('imgId')   
         classes=['maize','rice','sugarcane','wheat']
 
         def scale(image):
